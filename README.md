@@ -83,14 +83,14 @@ This guide documents the exact steps followed to get the pipeline running on a M
 Clone the repository and navigate into it:
 
 ```bash
-git clone https://github.com/lmmanriquem/rag-end2end-retriever.git
-cd rag-end2end-retriever
+git clone https://github.com/lmmanriquem/hybrid-rag-end2end.git
+cd hybrid-rag-end2end
 ```
 
 If you already have the repository cloned locally, just navigate to it:
 
 ```bash
-cd rag-end2end-retriever
+cd hybrid-rag-end2end
 ```
 
 ---
@@ -100,21 +100,21 @@ cd rag-end2end-retriever
 > **Important:** Python 3.13+ is NOT compatible with the dependency stack (PyTorch 2.x). Use Python 3.11.
 
 ```bash
-conda create -n rag-env python=3.11
-conda activate rag-env
+conda create -n hybrid-rag-env python=3.11
+conda activate hybrid-rag-env
 python --version   # must show Python 3.11.x
 ```
 
-Expected prompt: `(rag-env) your-machine %`
+Expected prompt: `(hybrid-rag-env) your-machine %`
 
 > **VS Code users — watch out for the auto-activated `venv`.**
-> VS Code detects the `venv/` folder inside the project and activates it automatically when you open a new terminal. If your prompt shows `(rag-env) (venv)`, the venv is active and takes precedence over conda — `python` will point to Python 3.13 or other (the venv's Python) instead of 3.11. All packages will install into the wrong environment.
+> VS Code detects the `venv/` folder inside the project and activates it automatically when you open a new terminal. If your prompt shows `(hybrid-rag-env) (venv)`, the venv is active and takes precedence over conda — `python` will point to Python 3.13 or other (the venv's Python) instead of 3.11. All packages will install into the wrong environment.
 >
-> **Fix:** run `deactivate` first to remove the venv, then `conda activate rag-env`. Verify with `python --version` — it must show `3.11.x` before continuing.
+> **Fix:** run `deactivate` first to remove the venv, then `conda activate hybrid-rag-env`. Verify with `python --version` — it must show `3.11.x` before continuing.
 >
 > ```bash
 > deactivate              # remove the auto-activated venv
-> conda activate rag-env  # activate the correct environment
+> conda activate hybrid-rag-env  # activate the correct environment
 > python --version        # must show Python 3.11.x
 > ```
 
@@ -412,13 +412,13 @@ Steps 1–9 are a **one-time setup**. Once the smoke test has passed, you do not
 deactivate
 
 # 2. Activate the conda environment
-conda activate rag-env
+conda activate hybrid-rag-env
 
 # 3. Start the Ray cluster
 ray start --head
 ```
 
-Your prompt should show `(rag-env) (base)` and `ray start --head` should print `Ray runtime started.`
+Your prompt should show `(hybrid-rag-env) (base)` and `ray start --head` should print `Ray runtime started.`
 
 ### Running the smoke test again
 
@@ -474,7 +474,7 @@ Expected output: `Epoch 0: 100% | 2/2 — Trainer.fit stopped: max_steps=1 reach
 
 | Resource | Persists? | Notes |
 |---|---|---|
-| `rag-env` conda environment | ✓ Yes | No need to reinstall |
+| `hybrid-rag-env` conda environment | ✓ Yes | No need to reinstall |
 | Downloaded models (HuggingFace cache) | ✓ Yes | Cached in `~/.cache/huggingface/` |
 | `smoke_test/kb/` (dataset + FAISS index) | ✓ Yes | Already encoded, ready to use |
 | Ray cluster | ✗ No | Must run `ray start --head` each session |

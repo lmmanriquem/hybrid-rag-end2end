@@ -66,7 +66,7 @@ We wrote a custom script `prepare_squad.py` (in the root of this repository) tha
 automates the full download and preparation in one command.
 
 > **Why not `load_dataset("rajpurkar/squad")`?** The `datasets` library version
-> pinned in `rag-env` (< 3.0.0) cannot parse the new HuggingFace metadata format
+> pinned in `hybrid-rag-env` (< 3.0.0) cannot parse the new HuggingFace metadata format
 > for the SQuAD repo, raising a `TypeError`. We work around this by downloading
 > `train-v1.1.json` and `dev-v1.1.json` directly from Stanford's servers using
 > Python's built-in `urllib` library — no extra dependencies needed.
@@ -82,7 +82,7 @@ automates the full download and preparation in one command.
    writes `kb/passages.tsv`
 
 ```bash
-# Full dataset (from the repo root, with rag-env activated)
+# Full dataset (from the repo root, with hybrid-rag-env activated)
 python prepare_squad.py --output_dir squad_data/
 ```
 
@@ -930,7 +930,7 @@ Run these checks before launching Step 4. If any item fails, do not start traini
 ```bash
 # 1. Correct environment
 python --version          # must show Python 3.11.x
-conda info --envs | grep "*"  # must show rag-env
+conda info --envs | grep "*"  # must show hybrid-rag-env
 
 # 2. Both FAISS indices exist
 ls -lh squad_data/kb/my_knowledge_dataset_hnsw_index.faiss
