@@ -1177,7 +1177,166 @@ Run full training with the winning α on QAConv (primary hypothesis) and optiona
 
 ### Phase 1 — Mini-ablation commands
 
-*(Will be added here after baseline mini tests establish the reference point.)*
+#### Step 1 — Pre-flight checklist
+
+Run these checks from the repo root before launching. If any item fails, fix it first.
+
+```bash
+# 1. Correct environment
+conda activate hybrid-rag-env
+python --version          # must show Python 3.11.x
+
+# 2. Correct directory
+pwd   # must end in hybrid-rag-end2end
+
+# 3. Mini FAISS indices exist (built during Quick Tests)
+ls squad_mini/kb/my_knowledge_dataset_hnsw_index.faiss
+ls squad_mini/kb/my_knowledge_dataset/dataset_info.json
+ls qaconv_mini/kb/my_knowledge_dataset_hnsw_index.faiss
+ls qaconv_mini/kb/my_knowledge_dataset/dataset_info.json
+
+# 4. Mini training data exists
+ls squad_mini/train.source squad_mini/val.source
+ls qaconv_mini/train.source qaconv_mini/val.source
+
+# 5. Script is executable
+ls run_mini_ablation.sh
+```
+
+If the mini FAISS indices are missing, rebuild them (takes ~20 sec each):
+
+```bash
+python use_own_knowledge_dataset.py \
+    --csv_path   squad_mini/kb/passages.tsv \
+    --output_dir squad_mini/kb/
+
+python use_own_knowledge_dataset.py \
+    --csv_path   qaconv_mini/kb/passages.tsv \
+    --output_dir qaconv_mini/kb/
+```
+
+#### Step 2 — Prevent sleep (~8h run)
+
+```bash
+sudo pmset -a sleep 0
+sudo pmset -a disksleep 0
+```
+
+Keep the Mac plugged in. Restore when done:
+
+```bash
+sudo pmset -a sleep 1
+sudo pmset -a disksleep 10
+```
+
+#### Step 3 — Run the ablation
+
+```bash
+bash run_mini_ablation.sh 2>&1 | tee ablation_log.txt
+```
+
+The script handles Ray start/stop internally. Do not start Ray manually before running it.
+
+The script runs 6 experiments sequentially (3 α values × 2 datasets), logs timestamps
+for each run, and prints a results summary at the end.
+
+**What it runs (in order):**
+
+| # | Dataset | α | Output dir | Est. time |
+|---|---|---|---|---|
+| 1 | QAConv mini | 0.3 | `qaconv_mini/output_a03/` | ~50 min |
+| 2 | QAConv mini | 0.5 | `qaconv_mini/output_a05/` | ~50 min |
+| 3 | QAConv mini | 0.7 | `qaconv_mini/output_a07/` | ~50 min |
+| 4 | SQuAD mini | 0.3 | `squad_mini/output_a03/` | ~1h 45min |
+| 5 | SQuAD mini | 0.5 | `squad_mini/output_a05/` | ~1h 45min |
+| 6 | SQuAD mini | 0.7 | `squad_mini/output_a07/` | ~1h 45min |
+
+**Total: ~7.75h on M4 Max (MPS)**
+
+Each run uses the same hyperparameters as the corresponding Quick Test (1 epoch,
+`val_check_interval=1` for dense EM curves) with the only difference being the
+`--alpha` flag. The script uses the existing mini FAISS indices — no re-indexing needed.
+
+**Checking results while running:**
+
+```bash
+# Read metrics from a completed run at any time
+python3 -c "
+import json
+with open('qaconv_mini/output_a03/metrics.json') as f:
+    data = json.load(f)
+vals = data['val']
+best = max(vals, key=lambda x: x['val_avg_em'])
+print(f'Best EM: {best[\"val_avg_em\"]:.4f} at step {best[\"step_count\"]}')
+print(f'Final EM: {vals[-1][\"val_avg_em\"]:.4f}')
+"
+```
+
+**After the script finishes**, the terminal summary shows:
+
+```
+Dataset        α      Best EM    Final EM   Output dir
+------------------------------------------------------------
+QAConv         0.3    X.XXXX     X.XXXX     qaconv_mini/output_a03/
+QAConv         0.5    X.XXXX     X.XXXX     qaconv_mini/output_a05/
+QAConv         0.7    X.XXXX     X.XXXX     qaconv_mini/output_a07/
+SQuAD          0.3    X.XXXX     X.XXXX     squad_mini/output_a03/
+SQuAD          0.5    X.XXXX     X.XXXX     squad_mini/output_a05/
+SQuAD          0.7    X.XXXX     X.XXXX     squad_mini/output_a07/
+
+Best α for QAConv: X.X  (Best EM = X.XXXX)
+Best α for SQuAD:  X.X  (Best EM = X.XXXX)
+```
+
+The winning α per dataset is used for Phase 2 full training.
+
+#### Step 4 — Consult results after completion
+
+The script writes two persistent outputs automatically:
+
+**Option A — JSON summary (programmatic):**
+
+```bash
+cat ablation_summary.json
+```
+
+**Option B — EXPERIMENTS.md (human-readable):** the results table below is updated
+in place by the script. Just scroll down to "Phase 1 — Results".
+
+**Option C — Individual metrics files** (one per run, always available mid-run):
+
+```bash
+# Replace qaconv_mini/output_a03 with any run's output dir
+python3 -c "
+import json
+with open('qaconv_mini/output_a03/metrics.json') as f:
+    data = json.load(f)
+vals = data['val']
+best = max(vals, key=lambda x: x['val_avg_em'])
+print(f'Best EM:  {best[\"val_avg_em\"]:.4f} at step {best[\"step_count\"]}')
+print(f'Final EM: {vals[-1][\"val_avg_em\"]:.4f}')
+"
+```
+
+#### Step 5 — Restore sleep settings
+
+```bash
+sudo pmset -a sleep 1
+sudo pmset -a disksleep 10
+```
+
+### Phase 1 — Results (to be filled after running)
+
+| Dataset | α | Best EM | Final EM | Notes |
+|---|---|---|---|---|
+| QAConv mini | 0.3 | — | — | ⏳ Pending |
+| QAConv mini | 0.5 | — | — | ⏳ Pending |
+| QAConv mini | 0.7 | — | — | ⏳ Pending |
+| SQuAD mini | 0.3 | — | — | ⏳ Pending |
+| SQuAD mini | 0.5 | — | — | ⏳ Pending |
+| SQuAD mini | 0.7 | — | — | ⏳ Pending |
+
+**Best α selected:** QAConv → ⏳ pending | SQuAD → ⏳ pending
 
 ### Phase 2 — Full hybrid training commands
 
