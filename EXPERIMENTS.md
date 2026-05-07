@@ -1,11 +1,15 @@
-# Experiments Log
+# Hybrid-RAG-end2end — Reproducibility Guide
 
-This document combines dataset preparation and experiment tracking for the replication of
-Siriwardhana et al. (TACL 2023) on Apple Silicon. It is written so that anyone — including
-future readers — can reproduce every step from scratch and understand exactly what happened
-at each stage.
+This document is the complete step-by-step guide for reproducing all experiments in
+*Hybrid-RAG-end2end: BM25+DPR Hybrid Retrieval in the RAG Training Loop*.
 
-> **Scope:** Covers dataset preparation, quick tests, FAISS index builds, FAISS re-encoding validation, and full training commands for both SQuAD and QAConv.
+It covers dataset preparation, FAISS index builds, validation tests, full baseline training
+(α = 0.0), mini-ablation over α, and full hybrid training — written so that anyone can
+reproduce every result from scratch on Apple Silicon (M-series) hardware.
+
+> **Scope:** SQuAD v1.1 and QAConv v1.1, both at mini scale (quick tests) and full scale
+> (baseline replication + hybrid experiments). Hybrid training commands are in the
+> [Hybrid Experiments](#hybrid-experiments) section.
 
 ---
 
@@ -1155,12 +1159,47 @@ print(f'Final loss: {last[\"val_avg_loss\"]:.2f}')
 
 ---
 
+## Hybrid Experiments
+
+> ⏳ This section will be populated once baseline training (α = 0.0) completes and the
+> mini-ablation identifies the best α value. Commands and results will be added here.
+
+### Overview
+
+The hybrid experiments follow a two-phase strategy to minimize total compute:
+
+**Phase 1 — Mini-ablation (~7h total):**
+Test α ∈ {0.3, 0.5, 0.7} on mini datasets to identify the best candidate without running
+full training for every α value.
+
+**Phase 2 — Full hybrid training:**
+Run full training with the winning α on QAConv (primary hypothesis) and optionally SQuAD.
+
+### Phase 1 — Mini-ablation commands
+
+*(Will be added here after baseline mini tests establish the reference point.)*
+
+### Phase 2 — Full hybrid training commands
+
+*(Will be added here after Phase 1 identifies the best α.)*
+
+### Hybrid experiment results
+
+| Dataset | α | EM | F1 | vs. baseline (α=0.0) | Status |
+|---|---|---|---|---|---|
+| SQuAD full | 0.0 | — | — | baseline | ⏳ Pending |
+| SQuAD full | TBD | — | — | — | ⏳ Pending |
+| QAConv full | 0.0 | — | — | baseline | ⏳ Pending |
+| QAConv full | TBD | — | — | — | ⏳ Pending |
+
+---
+
 ## References
 
 - **SQuAD:** Rajpurkar et al. (2016). SQuAD: 100,000+ Questions for Machine
   Comprehension of Text. https://rajpurkar.github.io/SQuAD-explorer/
 - **QAConv:** Wu et al. (2021). QAConv: Question Answering on Informative
   Conversations. https://github.com/salesforce/QAConv
-- **Paper being replicated:** Siriwardhana et al. (2023). Improving the Domain
+- **Base framework:** Siriwardhana et al. (2023). Improving the Domain
   Adaptation of RAG Models for Open Domain Question Answering. TACL.
   https://aclanthology.org/2023.tacl-1.1/

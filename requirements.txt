@@ -14,6 +14,7 @@ pytorch-lightning >= 1.9.5, < 2.0.0
 #                               for free-GPU detection during KB re-encoding.
 #                               Install with: pip install nvidia-ml-py3==7.352.0
 #                               DO NOT install on Apple Silicon (no NVIDIA drivers).
+rank-bm25 >= 0.2.2
 ray >= 2.0.0
 transformers >= 4.30.0, < 5.0.0
 gitpython >= 3.1.0

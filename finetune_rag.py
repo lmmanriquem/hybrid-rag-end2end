@@ -57,7 +57,8 @@ from transformers.integrations import is_ray_available
 
 if is_ray_available():
     import ray
-    from distributed_ray_retriever import RagRayDistributedRetriever, RayRetriever
+    from distributed_ray_retriever import RayRetriever
+    from hybrid_retriever import HybridRayDistributedRetriever
 
 from glob import glob
 
@@ -136,8 +137,10 @@ class GenerativeQAModule(BaseTransformer):
             hparams, config.generator = set_extra_model_params(extra_model_params, hparams, config.generator)
             if hparams.distributed_retriever == "ray":
                 # The Ray retriever needs the handles to the retriever actors.
-                retriever = RagRayDistributedRetriever.from_pretrained(
-                    hparams.model_name_or_path, hparams.actor_handles, config=config
+                retriever = HybridRayDistributedRetriever.from_pretrained(
+                    hparams.model_name_or_path, hparams.actor_handles,
+                    alpha=hparams.alpha,
+                    config=config,
                 )
 
                 if hparams.end2end:
@@ -256,6 +259,11 @@ class GenerativeQAModule(BaseTransformer):
             rag_kwargs["reduce_loss"] = True
 
         assert decoder_input_ids is not None
+
+        if self.is_rag_model and hasattr(self.model.rag.retriever, "set_query_texts"):
+            self.model.rag.retriever.set_query_texts(
+                self.tokenizer.question_encoder.batch_decode(source_ids, skip_special_tokens=True)
+            )
 
         outputs = self(
             source_ids,
@@ -474,6 +482,12 @@ class GenerativeQAModule(BaseTransformer):
     def _generative_step(self, batch: dict) -> dict:
         start_time = time.time()
         batch = BatchEncoding(batch).to(device=self.model.device)
+        if self.is_rag_model and hasattr(self.model.rag.retriever, "set_query_texts"):
+            self.model.rag.retriever.set_query_texts(
+                self.tokenizer.question_encoder.batch_decode(
+                    batch["input_ids"], skip_special_tokens=True
+                )
+            )
         generated_ids = self.model.generate(
             batch["input_ids"],
             attention_mask=batch["attention_mask"],
@@ -711,6 +725,12 @@ class GenerativeQAModule(BaseTransformer):
                 "Whether to use the dummy version of the dataset index. More info about custom indexes in the"
                 " RagRetriever documentation as well as in `examples/rag/use_own_knowledge_dataset.py`"
             ),
+        )
+        parser.add_argument(
+            "--alpha",
+            type=float,
+            default=0.0,
+            help="BM25/DPR fusion weight (0.0 = pure DPR baseline, 1.0 = pure BM25).",
         )
         return parser
 

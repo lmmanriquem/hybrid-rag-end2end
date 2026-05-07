@@ -1,16 +1,82 @@
-# RAG End-to-End Retriever — Apple Silicon Adaptation
- 
-> **Note:** This repository is a fork/adaptation of the original work by Shamane Siriwardhana et al.
-> The original README from the authors is preserved at [README_original_authors.md](./README_original_authors.md).
-> The original paper: *Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering*, TACL 2023.
+# Hybrid-RAG-end2end: BM25+DPR Hybrid Retrieval in the RAG Training Loop
+
+**Paper:** coming soon
+
+> **Based on:** Siriwardhana et al., *Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering*, TACL 2023. ([ACL Anthology](https://aclanthology.org/2023.tacl-1.1/))
 
 ---
 
-## About This Fork
+## What is this?
 
-The modifications in this repository are made by **Luis Manuel Manrique** ([@lmmanriquem](https://github.com/lmmanriquem)) for personal research and experimentation.
+This repository implements **Hybrid-RAG-end2end**, a research extension of the RAG-end2end framework (Siriwardhana et al., TACL 2023) that integrates hybrid BM25+DPR retrieval directly into the training loop of a generative RAG system.
 
-The original codebase targets NVIDIA CUDA hardware exclusively. The goal of this adaptation is to make the full end-to-end RAG training pipeline run on **Apple Silicon (M-series)** hardware, while fully preserving the original NVIDIA/CUDA code path so the same repository works on both platforms without modification.
+The original RAG-end2end trains a DPR retriever and a BART generator end-to-end, updating the FAISS knowledge base index periodically during training. This work extends that framework by replacing the pure DPR retriever with a hybrid retriever that fuses sparse (BM25) and dense (DPR) scores at every training step — not just at inference time.
+
+The central hypothesis is that this hybrid signal helps the model adapt to specialized conversational domains (QAConv) where DPR pre-training coverage is weaker, while having a smaller or neutral effect on general encyclopedic domains (SQuAD).
+
+---
+
+## Research Contribution
+
+**The fusion formula:**
+
+```
+score(q, p) = α · BM25̃(q, p) + (1 − α) · DPR̃(q, p)
+```
+
+Both scores are min-max normalized to [0, 1] before fusion. α ∈ {0.0, 0.3, 0.5, 0.7} is the balance parameter. Setting α = 0.0 recovers the original RAG-end2end baseline exactly.
+
+**Gradient flow is unchanged:** BM25 is non-differentiable, but it operates only on passage selection (re-ranking). Gradients still flow exclusively through the DPR question encoder and the BART generator — the end-to-end training dynamic is preserved.
+
+**How to use:**
+
+```bash
+# Baseline — pure DPR (reproduces Siriwardhana et al.)
+python finetune_rag.py ... --alpha 0.0
+
+# Hybrid BM25+DPR (this work)
+python finetune_rag.py ... --alpha 0.3
+```
+
+The only required change from the baseline run is adding `--alpha`. All other arguments remain identical.
+
+---
+
+## Hypotheses
+
+| | Hypothesis |
+|---|---|
+| **H1** | BM25+DPR hybrid improves EM and F1 on QAConv vs. pure DPR baseline (α = 0.0) |
+| **H2** | The improvement is larger in QAConv (specialized conversational domain) than in SQuAD (general encyclopedic) |
+| **H3** | The optimal α differs by domain: QAConv favors higher BM25 weight than SQuAD |
+
+---
+
+## Results
+
+Full training experiments are pending. This section will be updated with final EM and F1 results on SQuAD and QAConv once training is complete.
+
+| Experiment | Dataset | α | EM | F1 | Status |
+|---|---|---|---|---|---|
+| Baseline (DPR) | SQuAD full | 0.0 | — | — | ⏳ Pending |
+| Baseline (DPR) | QAConv full | 0.0 | — | — | ⏳ Pending |
+| Hybrid | SQuAD full | TBD | — | — | ⏳ Pending |
+| Hybrid | QAConv full | TBD | — | — | ⏳ Pending |
+| Paper target (Siriwardhana et al.) | SQuAD | — | 40.02 | 52.63 | — |
+| Paper target (Siriwardhana et al.) | QAConv | — | 24.25 | 36.05 | — |
+
+---
+
+## Citation
+
+```bibtex
+@article{manrique2026hybridrag,
+  title     = {Hybrid-RAG-end2end: BM25+DPR Hybrid Retrieval in the RAG Training Loop},
+  author    = {Manrique, Luis Manuel},
+  year      = {2026},
+  note      = {Manuscript in preparation}
+}
+```
 
 ---
 
@@ -27,69 +93,35 @@ The original codebase targets NVIDIA CUDA hardware exclusively. The goal of this
 | GPU Backend | MPS (Metal Performance Shaders) via PyTorch |
 | Re-encoding | CPU (MPS is occupied by the training loop) |
 
----
-
-## Changes Made to the Original Codebase
-
-### Modified files
-
-**`finetune_rag.py`**
-- Removed top-level `pynvml` import; replaced with lazy runtime import inside CUDA branch only
-- `training_step`: GPU detection is now platform-aware — CUDA branch preserved intact, new MPS/CPU branch added for Apple Silicon
-- State dict transfer: explicit `.cpu()` before `load_state_dict()` in re-encoding child processes (required for MPS)
-- Retriever access path corrected: `self.model.rag.retriever.re_load()` / `self.model.rag.retriever.init_retrieval()`
-- Three `hparams.gpus` None guards to prevent crashes when `--gpus` is not set (MPS path)
-- `faiss.omp_set_num_threads(1)` set at import time on macOS arm64, preventing a segfault caused by dual OpenMP runtimes (PyTorch + FAISS) competing for threads during FAISS HNSW search
-- `validation_epoch_end`: scalar metrics cast to `torch.float32` before `log_dict()` — MPS does not support float64, which is the default when PyTorch Lightning converts Python/numpy scalars to tensors
-
-**`lightning_base.py`**
-- `AdamW` import moved from `transformers` to `torch.optim` (removed from transformers in 4.x)
-- `total_steps()`: None-safe `gpus` guard
-- `generic_train()`: fp16 blocked on MPS with a clear warning; bf16-mixed still allowed
-- `ModelCheckpoint`: migrated from deprecated `filepath=` to `dirpath=` + `filename=`
-- Multi-GPU DDP guard: strategy only set when `gpus > 1`
-
-**`kb_encode_utils.py`**
-- FAISS thread count is now platform-aware: capped at 8 on Apple Silicon, uses all cores on Linux/NVIDIA
-
-**`requirements.txt`**
-- Added version upper bounds: `transformers < 5.0.0`, `datasets < 3.0.0`
-- `nvidia-ml-py3` marked as optional/NVIDIA-only with install instructions
-- `setup_env.py` recommended as the install entry point
-
-### New files
-
-**`finetune_rag_mps_end2end.sh`** — Launch script for Apple Silicon, mirrors the original NVIDIA script with MPS-specific flags (`--accelerator mps --devices 1 --precision 32`, no `--fp16`)
-
-**`setup_env.py`** — Platform-detecting installer. Auto-detects Apple Silicon vs NVIDIA vs CPU-only and installs the correct dependencies. Supports `--dry-run` flag.
+> The codebase also fully preserves the original NVIDIA/CUDA code path. No changes are required to run on NVIDIA hardware — see [NVIDIA / CUDA Compatibility](#nvidia--cuda-compatibility).
 
 ---
 
-## Step-by-Step Setup Guide (Apple Silicon — macOS)
+## Datasets
 
-This guide documents the exact steps followed to get the pipeline running on a MacBook Pro M4 Max. Follow these in order.
+| Dataset | Domain | QA pairs | KB passages | Paper table |
+|---|---|---|---|---|
+| SQuAD v1.1 | General (Wikipedia) | ~87K train | ~35K | Table 5, §5.3 |
+| QAConv v1.1 | Conversational (emails, Slack, papers) | ~26K train | ~69K | Table 1 |
+
+Full dataset preparation, FAISS index build, and experiment commands are documented in [EXPERIMENTS.md](./EXPERIMENTS.md).
+
+---
+
+## Setup
 
 ### Prerequisites
 
 - macOS with Apple Silicon (M1 / M2 / M3 / M4)
 - [Miniconda or Anaconda](https://docs.conda.io/en/latest/miniconda.html) installed
-- Internet connection (model downloads ~2.5 GB total on first run)
-- VS Code or any terminal
+- Internet connection (model downloads ~2.5 GB on first run)
 
 ---
 
-### Step 1 — Clone or open the repository
-
-Clone the repository and navigate into it:
+### Step 1 — Clone the repository
 
 ```bash
 git clone https://github.com/lmmanriquem/hybrid-rag-end2end.git
-cd hybrid-rag-end2end
-```
-
-If you already have the repository cloned locally, just navigate to it:
-
-```bash
 cd hybrid-rag-end2end
 ```
 
@@ -97,7 +129,7 @@ cd hybrid-rag-end2end
 
 ### Step 2 — Create a Python 3.11 conda environment
 
-> **Important:** Python 3.13+ is NOT compatible with the dependency stack (PyTorch 2.x). Use Python 3.11.
+> **Important:** Python 3.13+ is NOT compatible with the dependency stack. Use Python 3.11.
 
 ```bash
 conda create -n hybrid-rag-env python=3.11
@@ -105,36 +137,18 @@ conda activate hybrid-rag-env
 python --version   # must show Python 3.11.x
 ```
 
-Expected prompt: `(hybrid-rag-env) your-machine %`
-
-> **VS Code users — watch out for the auto-activated `venv`.**
-> VS Code detects the `venv/` folder inside the project and activates it automatically when you open a new terminal. If your prompt shows `(hybrid-rag-env) (venv)`, the venv is active and takes precedence over conda — `python` will point to Python 3.13 or other (the venv's Python) instead of 3.11. All packages will install into the wrong environment.
->
-> **Fix:** run `deactivate` first to remove the venv, then `conda activate hybrid-rag-env`. Verify with `python --version` — it must show `3.11.x` before continuing.
->
-> ```bash
-> deactivate              # remove the auto-activated venv
-> conda activate hybrid-rag-env  # activate the correct environment
-> python --version        # must show Python 3.11.x
-> ```
+> **VS Code users:** VS Code auto-activates the `venv/` folder when you open a terminal, overriding conda. If your prompt shows both `(hybrid-rag-env)` and `(venv)`, run `deactivate` first, then `conda activate hybrid-rag-env`.
 
 ---
 
 ### Step 3 — Install dependencies
 
-Run the platform-detecting installer (do NOT use `pip install -r requirements.txt` directly):
-
 ```bash
 python setup_env.py
 ```
 
-The script will:
-- Detect Apple Silicon automatically
-- Install PyTorch with MPS support
-- Skip `nvidia-ml-py3` (NVIDIA-only)
-- Verify that MPS is available
+This script auto-detects Apple Silicon, installs PyTorch with MPS support, and skips NVIDIA-only packages. Expected output at the end:
 
-Expected output at the end:
 ```
 ✓ MPS  available  — Apple Silicon GPU will be used for training
 ── Setup complete ───────────────────────────────────────────
@@ -142,9 +156,7 @@ Expected output at the end:
 
 ---
 
-### Step 4 — Pin dependency versions (important)
-
-`pip` may resolve newer incompatible versions. Force the correct range:
+### Step 4 — Pin dependency versions
 
 ```bash
 pip install "transformers>=4.30.0,<5.0.0" "datasets>=2.10.0,<3.0.0"
@@ -157,6 +169,7 @@ pip install "transformers>=4.30.0,<5.0.0" "datasets>=2.10.0,<3.0.0"
 ```bash
 python -c "
 import torch, pytorch_lightning as pl, transformers, datasets, faiss, ray
+from rank_bm25 import BM25Okapi
 print(f'torch:             {torch.__version__}')
 print(f'MPS available:     {torch.backends.mps.is_available()}')
 print(f'pytorch-lightning: {pl.__version__}')
@@ -165,35 +178,31 @@ print(f'datasets:          {datasets.__version__}')
 from transformers import RagSequenceForGeneration, RagTokenForGeneration, RagRetriever
 from transformers import DPRContextEncoder, DPRContextEncoderTokenizerFast
 print('RAG classes:       OK')
+print('rank_bm25:         OK')
 "
 ```
 
-All lines should print without errors. `MPS available` must be `True`.
+All lines must print without errors. `MPS available` must be `True`.
 
 ---
 
 ### Step 6 — Prepare training data
 
-Training data must be in plain text files, one item per line:
+Training data must be plain text files, one item per line:
 
 ```
 data/
   train.source   ← one question per line
-  train.target   ← one answer per line  (same order as .source)
-  val.source
-  val.target
-  test.source
-  test.target
+  train.target   ← one answer per line (same order as .source)
+  val.source / val.target / test.source / test.target
 ```
 
-Example (smoke test with dummy data):
+Example — smoke test with dummy data:
 
 ```bash
 mkdir -p smoke_test/data smoke_test/kb smoke_test/output smoke_test/shards
 
 python - << 'EOF'
-import os
-
 questions = [
     "What is the capital of France?",
     "Who wrote Romeo and Juliet?",
@@ -223,7 +232,7 @@ with open("smoke_test/kb/passages.tsv","w") as f:
     for title, text in passages:
         f.write(f"{title}\t{text}\n")
 
-print("(GOOD) Data files created . OK")
+print("(GOOD) Data files created. OK")
 EOF
 ```
 
@@ -231,11 +240,11 @@ EOF
 
 ### Step 7 — Encode the knowledge base
 
-The knowledge base must be encoded with DPR before training. On Apple Silicon, use this script (bypasses the `dataset.map()` multiprocessing issue that causes segfaults on macOS):
+Encode passages with DPR (two separate steps to avoid the macOS dual-OpenMP issue — see [Known Issues](#known-issues-on-macos-arm64)):
 
 ```bash
 python - << 'EOF'
-import os, torch, faiss, numpy as np
+import torch, numpy as np
 from datasets import Dataset
 from transformers import DPRContextEncoder, DPRContextEncoderTokenizerFast
 
@@ -249,7 +258,7 @@ with open("smoke_test/kb/passages.tsv") as f:
         if len(parts) == 2:
             titles.append(parts[0]); texts.append(parts[1])
 
-ctx_encoder  = DPRContextEncoder.from_pretrained("facebook/dpr-ctx_encoder-multiset-base").to(device)
+ctx_encoder   = DPRContextEncoder.from_pretrained("facebook/dpr-ctx_encoder-multiset-base").to(device)
 ctx_tokenizer = DPRContextEncoderTokenizerFast.from_pretrained("facebook/dpr-ctx_encoder-multiset-base")
 ctx_encoder.eval()
 
@@ -262,15 +271,14 @@ with torch.no_grad():
         inp = {k: v.to(device) for k, v in inp.items()}
         all_emb.append(ctx_encoder(**inp, return_dict=True).pooler_output.cpu().float().numpy())
 
+import numpy as np
 embeddings = np.concatenate(all_emb)
 ds = Dataset.from_dict({"title": titles, "text": texts,
                         "embeddings": [e for e in embeddings]})
 ds.save_to_disk("smoke_test/kb/my_knowledge_dataset")
-print("(GOOD)) Dataset with embeddings saved . OK")
+print("(GOOD) Dataset with embeddings saved. OK")
 EOF
 ```
-
-Then build the FAISS index in a **separate step** (avoids the dual OpenMP conflict between PyTorch and FAISS):
 
 ```bash
 KMP_DUPLICATE_LIB_OK=TRUE python - << 'EOF'
@@ -282,11 +290,9 @@ ds = load_from_disk("smoke_test/kb/my_knowledge_dataset")
 index = faiss.IndexHNSWFlat(768, 128, faiss.METRIC_INNER_PRODUCT)
 ds.add_faiss_index("embeddings", custom_index=index)
 ds.get_index("embeddings").save("smoke_test/kb/my_knowledge_dataset_hnsw_index.faiss")
-print("(GOOD)) FAISS index saved - OK")
+print("(GOOD) FAISS index saved. OK")
 EOF
 ```
-
-> **Why two steps?** PyTorch (via MPS) and FAISS both ship their own `libomp.dylib` on macOS. Loading both in the same process causes an abort. Splitting the steps keeps them in separate processes.
 
 ---
 
@@ -296,16 +302,11 @@ EOF
 ray start --head
 ```
 
-Expected output:
-```
-Ray runtime started.
-```
-
 ---
 
-### Step 9 — Run training
+### Step 9 — Run the smoke test
 
-For a quick smoke test (1 train batch + 1 val batch, no checkpoint saved):
+Verify the pipeline end-to-end with 1 training batch + 1 validation batch:
 
 ```bash
 KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false python finetune_rag.py \
@@ -348,81 +349,65 @@ KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false python finetune_rag.py \
     --shard_dir             smoke_test/shards \
     --indexing_freq         500 \
     --num_workers           0 \
+    --alpha                 0.0 \
     --fast_dev_run
 ```
 
-> **`--num_workers 0` is required on macOS.** PyTorch Lightning's DataLoader defaults to `num_workers=4`, which spawns child processes. MPS cannot be used from child processes on macOS, causing a segfault. Setting `--num_workers 0` makes the DataLoader run in the main process. There is a minor throughput cost, but it is the only stable configuration on Apple Silicon.
+Expected: `Trainer.fit stopped: max_steps=1 reached.` with a numeric loss value.
 
-For full training with your own data, edit and run `finetune_rag_mps_end2end.sh` (update the path variables at the top of the script).
+To also verify the hybrid path, run the same command with `--alpha 0.3`. The loss value will differ slightly (different passages are retrieved), confirming BM25 fusion is active.
 
 ---
 
-### Step 10 — Stop the Ray cluster when done
+### Step 10 — Stop the Ray cluster
 
 ```bash
 ray stop
 ```
 
-> Always run `ray stop` before shutting down your machine. Ray runs as a background process and does not stop automatically when you close the terminal or power off. If you forget, it will restart cleanly the next time you run `ray start --head`.
-
 ---
 
-## Replication Experiments
+## Experiments
 
-This adaptation is being used to replicate the experiments from Siriwardhana et al. (TACL 2023). The following table tracks the status of each planned experiment.
-
-> 📄 **[EXPERIMENTS.md](./EXPERIMENTS.md)** — full guide for downloading, preparing, and running both datasets (SQuAD and QAConv), including Apple Silicon fixes, actual timing, quick-test results, and full training commands.
-
-### Dataset Availability
-
-| Dataset | Experiment | Accessible | Notes |
-|---|---|---|---|
-| **SQuAD** | Table 5 — Open-Domain | ✅ Yes | Downloaded directly from Stanford via `urllib` (CC BY-SA 4.0). Note: `load_dataset("rajpurkar/squad")` fails with the pinned `datasets` version — see EXPERIMENTS.md. |
-| **QAConv** | Table 1 — Conversation | ✅ Yes | Manual download from [github.com/salesforce/QAConv](https://github.com/salesforce/QAConv) |
-| **NewsQA** | Table 1 — News | ⚠️ Restricted | QA pairs available but CNN articles cannot be redistributed (copyright). Requires multi-step manual compilation — not selected. |
-| **CORD-19 / COVID-19** | Table 1 — COVID-19 | ❌ Not selected | Articles available on HuggingFace but the paper requires generating 225K synthetic QA pairs via a separate BART fine-tuning pipeline — out of scope for initial replication. |
+Full step-by-step instructions for all experiments are in [EXPERIMENTS.md](./EXPERIMENTS.md), including dataset preparation, FAISS index builds, quick tests, trigger test, and full training commands for both baseline and hybrid configurations.
 
 ### Experiment Status
 
-| Experiment | Dataset | Est. Training Time (M4 Max) | Status | Target EM | Obtained EM |
+| Experiment | Dataset | α | Est. Time (M4 Max) | Status | EM |
 |---|---|---|---|---|---|
-| Smoke test (dummy data) | Dummy | < 1 min | ✅ Done | — | loss ≈ 76.5 |
-| Quick test | SQuAD mini (500 train / 2K KB) | ~1h45min (1 epoch) | ✅ Done | — | 0.07 (best), 0.05 (final) |
-| Quick test | QAConv mini (300 train / 1.5K KB) | ~50min | ✅ Done | — | 0.22 (best), 0.20 (final) |
-| FAISS index build | SQuAD full (34,620 passages) | ~2 min | ✅ Done | — | — |
-| FAISS index build | QAConv full (68,700 passages) | ~6 min | ✅ Done | — | — |
-| **Trigger test** (FAISS re-encoding validation) | QAConv mini (1,100 train / 3K KB) | ~10min | ✅ Done | — | Re-encoding fired at batch 500 ✅ |
-| Open-Domain QA | SQuAD full (~35K KB, ~87K QA) | **~4.5 days** (with `--val_check_interval 500`) | ⏳ Pending | 40.02 | — |
-| Conversation Domain | QAConv full (~69K KB, ~26K QA) | **~1.7 days** (with `--val_check_interval 500`) | ⏳ Pending | 24.25 | — |
+| Smoke test | Dummy | 0.0 | < 1 min | ✅ Done | loss ≈ 76.5 |
+| Smoke test | Dummy | 0.3 | < 1 min | ✅ Done | loss ≈ 81.4 |
+| Quick test | SQuAD mini (500 / 2K KB) | 0.0 | ~1h45min | ✅ Done | 0.07 (best) |
+| Quick test | QAConv mini (300 / 1.5K KB) | 0.0 | ~50min | ✅ Done | 0.22 (best) |
+| FAISS index build | SQuAD full (34,620 passages) | — | ~2 min | ✅ Done | — |
+| FAISS index build | QAConv full (68,707 passages) | — | ~6 min | ✅ Done | — |
+| FAISS re-encoding trigger test | QAConv (1,100 / 3K KB) | — | ~10 min | ✅ Done | fired ✅ |
+| **Baseline** | SQuAD full (~87K / 35K KB) | 0.0 | ~4.5 days | ⏳ Pending | target: 40.02 |
+| **Baseline** | QAConv full (~26K / 69K KB) | 0.0 | ~1.7 days | ⏳ Pending | target: 24.25 |
+| **Mini-ablation** | SQuAD mini | 0.3 / 0.5 / 0.7 | ~5h total | ⏳ Pending | — |
+| **Mini-ablation** | QAConv mini | 0.3 / 0.5 / 0.7 | ~2.5h total | ⏳ Pending | — |
+| **Hybrid (best α)** | SQuAD full | TBD | ~4.5 days | ⏳ Pending | — |
+| **Hybrid (best α)** | QAConv full | TBD | ~1.7 days | ⏳ Pending | — |
 
-> ⚠️ **Full training requires `--val_check_interval 500`** — without it, validation runs after every training batch and SQuAD full would take ~6,555 days. See the "Understanding val_check_interval" section in [EXPERIMENTS.md](./EXPERIMENTS.md) for the full explanation.
-
-> 📄 Full replication plan with step-by-step instructions: [EXPERIMENTS.md](./EXPERIMENTS.md)
+> ⚠️ Full training requires `--val_check_interval 500`. Without it, validation runs after every training batch and SQuAD full would take ~6,555 days. See [EXPERIMENTS.md](./EXPERIMENTS.md) for the full explanation.
 
 ---
 
 ## Daily Workflow (returning sessions)
 
-Steps 1–9 are a **one-time setup**. Once the smoke test has passed, you do not need to repeat them. The following is all you need when returning to the project.
+Steps 1–9 are one-time setup. Once the smoke test has passed, this is all you need each session:
 
 ### Starting a session
 
 ```bash
-# 1. Open a terminal in VS Code — if the prompt shows (venv), deactivate it first:
-deactivate
-
-# 2. Activate the conda environment
+deactivate                    # if VS Code auto-activated a venv
 conda activate hybrid-rag-env
-
-# 3. Start the Ray cluster
 ray start --head
 ```
 
-Your prompt should show `(hybrid-rag-env) (base)` and `ray start --head` should print `Ray runtime started.`
+### Running the smoke test
 
-### Running the smoke test again
-
-The knowledge base and FAISS index are already on disk from the first setup. You can run the smoke test directly:
+The KB and FAISS index from first setup persist on disk:
 
 ```bash
 KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false python finetune_rag.py \
@@ -465,10 +450,9 @@ KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false python finetune_rag.py \
     --shard_dir             smoke_test/shards \
     --indexing_freq         500 \
     --num_workers           0 \
+    --alpha                 0.0 \
     --fast_dev_run
 ```
-
-Expected output: `Epoch 0: 100% | 2/2 — Trainer.fit stopped: max_steps=1 reached.`
 
 ### What persists between sessions
 
@@ -493,8 +477,8 @@ These must be set before any run that combines PyTorch + FAISS on macOS:
 
 | Variable | Value | Reason |
 |---|---|---|
-| `KMP_DUPLICATE_LIB_OK` | `TRUE` | PyTorch and FAISS both ship `libomp.dylib`; without this flag, the second load aborts the process |
-| `TOKENIZERS_PARALLELISM` | `false` | Rust-based HuggingFace tokenizers conflict with macOS `spawn`-based multiprocessing during KB re-encoding |
+| `KMP_DUPLICATE_LIB_OK` | `TRUE` | PyTorch and FAISS both ship `libomp.dylib`; the second load aborts the process without this |
+| `TOKENIZERS_PARALLELISM` | `false` | HuggingFace tokenizers conflict with macOS `spawn`-based multiprocessing during KB re-encoding |
 
 Both are already exported in `finetune_rag_mps_end2end.sh`.
 
@@ -504,75 +488,65 @@ Both are already exported in `finetune_rag_mps_end2end.sh`.
 
 | Issue | Cause | Fix applied |
 |---|---|---|
-| `zsh: segmentation fault` during KB encoding | `dataset.map()` + tokenizer parallelism on macOS | Custom encoding loop (Step 7) |
+| `zsh: segmentation fault` during KB encoding | `dataset.map()` + tokenizer parallelism on macOS | Custom encoding loop in Step 7 |
 | `OMP: Error #15` / abort during FAISS index build | Dual `libomp.dylib` (PyTorch + FAISS) | Separate FAISS step + `KMP_DUPLICATE_LIB_OK=TRUE` |
 | `ImportError: cannot import name 'AdamW' from 'transformers'` | `AdamW` removed from transformers in 4.x | Import from `torch.optim` in `lightning_base.py` |
 | `--fp16` crash on MPS | APEX not available on Apple Silicon | fp16 blocked in `lightning_base.py`; use `--precision 32` or `bf16-mixed` |
-| `zsh: segmentation fault` during first training batch | FAISS (CPU) and PyTorch MPS share the process; dual OpenMP runtimes race for threads during FAISS HNSW search | `faiss.omp_set_num_threads(1)` set at startup in `finetune_rag.py` (macOS arm64 only; NVIDIA unaffected) |
-| `zsh: segmentation fault` + `21 leaked semaphore objects` during Epoch 0 | PyTorch Lightning DataLoader spawns `num_workers=4` child processes by default; MPS cannot be accessed from child processes on macOS | Add `--num_workers 0` to all training commands on Apple Silicon |
-| `TypeError: Cannot convert a MPS Tensor to float64 dtype` in `validation_epoch_end` | PyTorch Lightning's `log_dict` calls `torch.tensor(value, device=mps)` on Python/numpy scalars, defaulting to float64; MPS doesn't support float64 | Explicit `torch.tensor(..., dtype=torch.float32)` cast in `validation_epoch_end` in `finetune_rag.py` |
-| `RuntimeError: size of tensor a (N) must match tensor b (512)` during FAISS index build | Some passages exceed 512 tokens; tokenizer has `truncation=True` but no `max_length`, so truncation never fires | Added `max_length=512` to tokenizer call in `use_own_knowledge_dataset.py` |
+| Segfault during first training batch | Dual OpenMP runtimes (PyTorch MPS + FAISS CPU) race during HNSW search | `faiss.omp_set_num_threads(1)` at startup in `finetune_rag.py` (macOS only) |
+| Segfault + `21 leaked semaphore objects` in Epoch 0 | DataLoader spawns child processes; MPS inaccessible from child processes on macOS | `--num_workers 0` required on all Apple Silicon runs |
+| `TypeError: Cannot convert a MPS Tensor to float64 dtype` | PyTorch Lightning passes Python/numpy scalars to `log_dict` as float64; MPS doesn't support float64 | Explicit `torch.float32` cast in `validation_epoch_end` in `finetune_rag.py` |
+| `RuntimeError: size of tensor a must match tensor b` during FAISS build | Some passages exceed 512 tokens; truncation not triggered without `max_length` | Added `max_length=512` in `use_own_knowledge_dataset.py` |
 
 ---
 
-## How FAISS re-encoding works on Apple Silicon
+## How FAISS Re-encoding Works on Apple Silicon
 
-The RAG-end2end training loop re-encodes the entire knowledge base every `--indexing_freq`
-batches. This is what makes training truly end-to-end: the DPR context encoder's updated weights
-are used to rebuild the FAISS index so the retriever improves alongside the generator.
+RAG-end2end re-encodes the entire knowledge base every `--indexing_freq` batches using the updated DPR context encoder weights. This is what makes training truly end-to-end: the retriever adapts alongside the generator.
 
-This fork fully supports re-encoding on Apple Silicon. Instead of NVIDIA GPUs, the M-series CPU
-handles it. The relevant block in `finetune_rag.py` (simplified):
+On Apple Silicon the M-series CPU handles re-encoding (MPS is occupied by training). Re-encoding runs as a background child process and does not block training steps.
 
 ```python
 if torch.cuda.is_available():
-    # NVIDIA path: find free GPUs via pynvml
-    free_gpu_list = [cuda:0, cuda:1, ...]
+    free_gpu_list = ["cuda:0", "cuda:1", ...]   # NVIDIA: use free GPUs
 else:
-    # Apple Silicon / CPU path
-    free_gpu_list = ["cpu"] * index_gpus   # re-encoding runs on CPU
+    free_gpu_list = ["cpu"] * index_gpus        # Apple Silicon: use CPU
 ```
 
-| Component | NVIDIA (original) | Apple Silicon (this fork) |
+| Component | NVIDIA | Apple Silicon |
 |---|---|---|
-| Generator (BART) | ✅ Trained end-to-end | ✅ Trained end-to-end |
-| Question encoder (DPR) | ✅ Updated during training | ✅ Updated during training |
-| Context encoder (DPR) | ✅ Updated + reflected in FAISS index | ✅ Updated + reflected in FAISS index |
-| Re-encoding device | NVIDIA GPU (fast) | M-series CPU (slower, ~6 min/cycle) |
-| FAISS index over time | Evolves with training | Evolves with training |
-
-The re-encoding child processes run in the background (via Python `multiprocessing`) while
-training continues, so the CPU overhead does not block training steps. The final model quality
-should be close to NVIDIA results. The hardware table at the top of this file shows
-`Re-encoding: CPU` for exactly this reason.
-
-### One known risk on macOS
-
-macOS uses `spawn` (not `fork`) for multiprocessing. The re-encoding child processes were
-tested during mini-scale runs, but the full `--indexing_freq`-triggered cycles only fire during
-full training (when `batch_idx > 0` and `batch_idx % 500 == 0`). If a child process crash
-occurs during full training, it will appear in the logs as a warning but should not stop
-training — the next re-encoding cycle will retry.
+| Generator (BART) | ✅ End-to-end | ✅ End-to-end |
+| Question encoder (DPR) | ✅ Updated | ✅ Updated |
+| Context encoder (DPR) | ✅ Reflected in FAISS | ✅ Reflected in FAISS |
+| Re-encoding device | NVIDIA GPU | M-series CPU (~6 min/cycle) |
 
 ---
 
 ## NVIDIA / CUDA Compatibility
 
-The original CUDA code path is fully preserved. On any machine with an NVIDIA GPU:
+The original CUDA code path is fully preserved. On NVIDIA hardware:
 
 - `pynvml` is loaded lazily at runtime only when CUDA is detected
 - `nvidia-ml-py3` is installed by `setup_env.py` only on NVIDIA systems
-- DDP multi-GPU strategy is activated automatically when `--gpus > 1`
-- FAISS uses all available CPU cores for indexing (no cap)
+- DDP multi-GPU strategy activates automatically when `--gpus > 1`
+- FAISS uses all available CPU cores for indexing
 
-No changes are required to run on NVIDIA hardware. The same codebase handles both.
+No changes are required to run on NVIDIA hardware.
 
 ---
 
-## Reference
+## Implementation Notes
 
-- Original README and implementation details: [README_original_authors.md](./README_original_authors.md)
-- Original paper: Siriwardhana et al., *Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering*, TACL 2023. [https://aclanthology.org/2023.tacl-1.1/](https://aclanthology.org/2023.tacl-1.1/)
-- Original blog post: [How to finetune the entire RAG architecture including DPR retriever](https://shamanesiri.medium.com/how-to-finetune-the-entire-rag-architecture-including-dpr-retriever-4b4385322552)
-- Original Source Code: [huggingface/transformers-research-projects/tree/main/rag-end2end-retriever](https://github.com/huggingface/transformers-research-projects/tree/main/rag-end2end-retriever) 
-- Base RAG paper: Lewis et al., [ACM Digital Library — Lewis et al. NeurIPS 2020](https://dl.acm.org/doi/abs/10.5555/3495724.3496517)
+This repository extends the [rag-end2end-retriever](https://github.com/huggingface/transformers-research-projects/tree/main/rag-end2end-retriever) codebase with two categories of changes:
+
+**Apple Silicon adaptations** (in `finetune_rag.py`, `lightning_base.py`, `kb_encode_utils.py`): platform-aware GPU detection, FAISS OpenMP conflict resolution, MPS dtype handling, and multiprocessing fixes for macOS `spawn`. These are transparent to functionality — the training behavior is identical to the NVIDIA path.
+
+**Hybrid retrieval contribution** (in `hybrid_retriever.py`, `build_bm25_index.py`, and additions to `finetune_rag.py`): `HybridRayDistributedRetriever` subclasses `RagRayDistributedRetriever` and overrides `retrieve()` to fuse BM25 and DPR scores before returning the top-K passages to the training loop. The `--alpha` argument controls the fusion weight. Setting `--alpha 0.0` disables BM25 entirely with zero overhead.
+
+---
+
+## References
+
+- Siriwardhana et al. (2023). *Improving the Domain Adaptation of RAG Models for Open Domain QA.* TACL. [ACL Anthology](https://aclanthology.org/2023.tacl-1.1/)
+- Lewis et al. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.* NeurIPS. [ACM](https://dl.acm.org/doi/abs/10.5555/3495724.3496517)
+- Karpukhin et al. (2020). *Dense Passage Retrieval for Open-Domain Question Answering.* EMNLP.
+- Robertson & Zaragoza (2009). *The Probabilistic Relevance Framework: BM25 and Beyond.* Foundations and Trends in Information Retrieval.

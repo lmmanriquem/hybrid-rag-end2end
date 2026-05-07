@@ -86,7 +86,8 @@ python finetune_rag.py \
     --index_gpus            1 \
     --gpu_order             "[]" \
     --shard_dir             "$SHARD_DIR" \
-    --indexing_freq         500
+    --indexing_freq         500 \
+    --alpha                 0.0
 
 echo "==> Step 4: Stopping Ray cluster"
 ray stop
