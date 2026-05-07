@@ -309,7 +309,7 @@ python use_own_knowledge_dataset.py \
     --csv_path   squad_mini/kb/passages.tsv \
     --output_dir squad_mini/kb/
 
-# QAConv full (not yet run — estimate ~4–5 min on M4 Max)
+# QAConv full (~6 min on M4 Max, MPS)
 python use_own_knowledge_dataset.py \
     --csv_path   qaconv_data/kb/passages.tsv \
     --output_dir qaconv_data/kb/
