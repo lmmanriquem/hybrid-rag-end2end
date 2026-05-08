@@ -1329,14 +1329,14 @@ sudo pmset -a disksleep 10
 
 | Dataset | α | Best EM | Final EM | Notes |
 |---|---|---|---|---|
-| QAConv mini | 0.3 | — | — | ⏳ Pending |
-| QAConv mini | 0.5 | — | — | ⏳ Pending |
-| QAConv mini | 0.7 | — | — | ⏳ Pending |
-| SQuAD mini | 0.3 | — | — | ⏳ Pending |
-| SQuAD mini | 0.5 | — | — | ⏳ Pending |
-| SQuAD mini | 0.7 | — | — | ⏳ Pending |
+| QAConv mini | 0.3 | 0.2000 | 0.1667 | ✅ |
+| QAConv mini | 0.5 | 0.1833 | 0.1833 | ✅ |
+| QAConv mini | 0.7 | 0.2500 | 0.2500 | ✅ |
+| SQuAD mini | 0.3 | 0.0700 | 0.0500 | ✅ |
+| SQuAD mini | 0.5 | 0.0700 | 0.0400 | ✅ |
+| SQuAD mini | 0.7 | 0.1200 | 0.0700 | ✅ |
 
-**Best α selected:** QAConv → ⏳ pending | SQuAD → ⏳ pending
+**Best α selected:** QAConv → α=0.7 (EM=0.2500) | SQuAD → α=0.7 (EM=0.1200)
 
 ### Phase 2 — Full hybrid training commands
 
