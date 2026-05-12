@@ -1338,18 +1338,361 @@ sudo pmset -a disksleep 10
 
 **Best α selected:** QAConv → α=0.7 (EM=0.2500) | SQuAD → α=0.7 (EM=0.1200)
 
-### Phase 2 — Full hybrid training commands
+### Phase 2 — Full hybrid training commands (10% subset)
 
-*(Will be added here after Phase 1 identifies the best α.)*
+**Strategy:** Phase 1 identified α=0.7 as the winner on both datasets. Phase 2 runs two
+conditions — baseline (α=0.0) and hybrid (α=0.7) — on a **10% random subset** of each
+training set. The full knowledge bases (KB) are kept intact so retrieval quality is not
+artificially limited. All four conditions use the exact same subset, which is declared in
+the paper with a standard sentence.
+
+**Estimated time on M4 Max (MPS):**
+
+| Run | Dataset | α | Est. time |
+|---|---|---|---|
+| Baseline | SQuAD 10% | 0.0 | ~11 h |
+| Hybrid | SQuAD 10% | 0.7 | ~11 h |
+| Baseline | QAConv 10% | 0.0 | ~4 h |
+| Hybrid | QAConv 10% | 0.7 | ~4 h |
+| **Total** | | | **~30 h (~1.25 days)** |
+
+---
+
+#### Step 1 — Prepare 10% subset directories
+
+This step creates `squad_10pct/` and `qaconv_10pct/` with the first 10% of training
+examples. The full KB (passages + FAISS index) from `squad_data/` and `qaconv_data/` is
+reused directly — no re-indexing needed.
+
+```bash
+# ── SQuAD 10% ────────────────────────────────────────────────
+mkdir -p squad_10pct
+
+# Take first 8,760 training examples (10% of 87,599)
+head -n 8760 squad_data/train.source > squad_10pct/train.source
+head -n 8760 squad_data/train.target > squad_10pct/train.target
+
+# Reuse full val/test sets for stable evaluation
+cp squad_data/val.source  squad_10pct/val.source
+cp squad_data/val.target  squad_10pct/val.target
+cp squad_data/test.source squad_10pct/test.source
+cp squad_data/test.target squad_10pct/test.target
+
+# Verify
+wc -l squad_10pct/train.source   # must be 8760
+wc -l squad_10pct/val.source     # must be 5285
+
+# ── QAConv 10% ───────────────────────────────────────────────
+mkdir -p qaconv_10pct
+
+# Take first 2,600 training examples (10% of 25,988)
+head -n 2600 qaconv_data/train.source > qaconv_10pct/train.source
+head -n 2600 qaconv_data/train.target > qaconv_10pct/train.target
+
+# Reuse full val/test sets
+cp qaconv_data/val.source  qaconv_10pct/val.source
+cp qaconv_data/val.target  qaconv_10pct/val.target
+cp qaconv_data/test.source qaconv_10pct/test.source
+cp qaconv_data/test.target qaconv_10pct/test.target
+
+# Verify
+wc -l qaconv_10pct/train.source  # must be 2600
+wc -l qaconv_10pct/val.source    # must be 3472
+```
+
+> **Note:** `--data_dir` in all training commands below points to the 10% directories,
+> while `--passages_path`, `--index_path`, and `--csv_path` still point to the full KB
+> under `squad_data/kb/` and `qaconv_data/kb/`. This is intentional: we train on fewer
+> QA pairs but retrieve from the full knowledge base.
+
+---
+
+#### Step 2 — Pre-flight checklist
+
+```bash
+# 1. Correct environment
+conda activate hybrid-rag-env
+python --version          # must show Python 3.11.x
+
+# 2. 10% subset directories exist
+wc -l squad_10pct/train.source   # 8760
+wc -l qaconv_10pct/train.source  # 2600
+
+# 3. Full KB and FAISS indices exist (reused from earlier)
+ls -lh squad_data/kb/my_knowledge_dataset_hnsw_index.faiss
+ls -lh qaconv_data/kb/my_knowledge_dataset_hnsw_index.faiss
+ls squad_data/kb/my_knowledge_dataset/dataset_info.json
+ls qaconv_data/kb/my_knowledge_dataset/dataset_info.json
+
+# 4. Output dirs (create if missing)
+mkdir -p squad_10pct/output_baseline  squad_10pct/shards_baseline
+mkdir -p squad_10pct/output_hybrid    squad_10pct/shards_hybrid
+mkdir -p qaconv_10pct/output_baseline qaconv_10pct/shards_baseline
+mkdir -p qaconv_10pct/output_hybrid   qaconv_10pct/shards_hybrid
+
+# 5. Ray status
+ray status   # if not running: ray start --head
+```
+
+---
+
+#### Step 3 — Prevent sleep (~30 h run)
+
+```bash
+sudo pmset -a sleep 0
+sudo pmset -a disksleep 0
+# Restore after all runs: sudo pmset -a sleep 1 && sudo pmset -a disksleep 10
+```
+
+---
+
+#### Step 4a — Baseline SQuAD 10% (α=0.0, ~11 h)
+
+```bash
+ray start --head
+
+KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false \
+python finetune_rag.py \
+    --data_dir              squad_10pct \
+    --output_dir            squad_10pct/output_baseline \
+    --model_name_or_path    facebook/rag-token-base \
+    --model_type            rag_token \
+    --accelerator           mps \
+    --devices               1 \
+    --precision             32 \
+    --do_train \
+    --end2end \
+    --n_val                 300 \
+    --train_batch_size      2 \
+    --eval_batch_size       1 \
+    --max_source_length     128 \
+    --max_target_length     25 \
+    --val_max_target_length 25 \
+    --test_max_target_length 25 \
+    --label_smoothing       0.1 \
+    --dropout               0.1 \
+    --attention_dropout     0.1 \
+    --weight_decay          0.001 \
+    --adam_epsilon          1e-08 \
+    --max_grad_norm         0.1 \
+    --lr_scheduler          polynomial \
+    --learning_rate         3e-05 \
+    --num_train_epochs      10 \
+    --warmup_steps          50 \
+    --gradient_accumulation_steps 8 \
+    --distributed_retriever ray \
+    --num_retrieval_workers 1 \
+    --passages_path         squad_data/kb/my_knowledge_dataset \
+    --index_path            squad_data/kb/my_knowledge_dataset_hnsw_index.faiss \
+    --index_name            custom \
+    --context_encoder_name  facebook/dpr-ctx_encoder-multiset-base \
+    --csv_path              squad_data/kb/passages.tsv \
+    --index_gpus            1 \
+    --gpu_order             "[]" \
+    --shard_dir             squad_10pct/shards_baseline \
+    --indexing_freq         500 \
+    --num_workers           0 \
+    --val_check_interval    500 \
+    --alpha                 0.0
+```
+
+---
+
+#### Step 4b — Baseline QAConv 10% (α=0.0, ~4 h)
+
+```bash
+KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false \
+python finetune_rag.py \
+    --data_dir              qaconv_10pct \
+    --output_dir            qaconv_10pct/output_baseline \
+    --model_name_or_path    facebook/rag-token-base \
+    --model_type            rag_token \
+    --accelerator           mps \
+    --devices               1 \
+    --precision             32 \
+    --do_train \
+    --end2end \
+    --n_val                 300 \
+    --train_batch_size      2 \
+    --eval_batch_size       1 \
+    --max_source_length     128 \
+    --max_target_length     25 \
+    --val_max_target_length 25 \
+    --test_max_target_length 25 \
+    --label_smoothing       0.1 \
+    --dropout               0.1 \
+    --attention_dropout     0.1 \
+    --weight_decay          0.001 \
+    --adam_epsilon          1e-08 \
+    --max_grad_norm         0.1 \
+    --lr_scheduler          polynomial \
+    --learning_rate         3e-05 \
+    --num_train_epochs      10 \
+    --warmup_steps          50 \
+    --gradient_accumulation_steps 8 \
+    --distributed_retriever ray \
+    --num_retrieval_workers 1 \
+    --passages_path         qaconv_data/kb/my_knowledge_dataset \
+    --index_path            qaconv_data/kb/my_knowledge_dataset_hnsw_index.faiss \
+    --index_name            custom \
+    --context_encoder_name  facebook/dpr-ctx_encoder-multiset-base \
+    --csv_path              qaconv_data/kb/passages.tsv \
+    --index_gpus            1 \
+    --gpu_order             "[]" \
+    --shard_dir             qaconv_10pct/shards_baseline \
+    --indexing_freq         500 \
+    --num_workers           0 \
+    --val_check_interval    500 \
+    --alpha                 0.0
+```
+
+---
+
+#### Step 5a — Hybrid SQuAD 10% (α=0.7, ~11 h)
+
+```bash
+KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false \
+python finetune_rag.py \
+    --data_dir              squad_10pct \
+    --output_dir            squad_10pct/output_hybrid \
+    --model_name_or_path    facebook/rag-token-base \
+    --model_type            rag_token \
+    --accelerator           mps \
+    --devices               1 \
+    --precision             32 \
+    --do_train \
+    --end2end \
+    --n_val                 300 \
+    --train_batch_size      2 \
+    --eval_batch_size       1 \
+    --max_source_length     128 \
+    --max_target_length     25 \
+    --val_max_target_length 25 \
+    --test_max_target_length 25 \
+    --label_smoothing       0.1 \
+    --dropout               0.1 \
+    --attention_dropout     0.1 \
+    --weight_decay          0.001 \
+    --adam_epsilon          1e-08 \
+    --max_grad_norm         0.1 \
+    --lr_scheduler          polynomial \
+    --learning_rate         3e-05 \
+    --num_train_epochs      10 \
+    --warmup_steps          50 \
+    --gradient_accumulation_steps 8 \
+    --distributed_retriever ray \
+    --num_retrieval_workers 1 \
+    --passages_path         squad_data/kb/my_knowledge_dataset \
+    --index_path            squad_data/kb/my_knowledge_dataset_hnsw_index.faiss \
+    --index_name            custom \
+    --context_encoder_name  facebook/dpr-ctx_encoder-multiset-base \
+    --csv_path              squad_data/kb/passages.tsv \
+    --index_gpus            1 \
+    --gpu_order             "[]" \
+    --shard_dir             squad_10pct/shards_hybrid \
+    --indexing_freq         500 \
+    --num_workers           0 \
+    --val_check_interval    500 \
+    --alpha                 0.7
+```
+
+---
+
+#### Step 5b — Hybrid QAConv 10% (α=0.7, ~4 h)
+
+```bash
+KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false \
+python finetune_rag.py \
+    --data_dir              qaconv_10pct \
+    --output_dir            qaconv_10pct/output_hybrid \
+    --model_name_or_path    facebook/rag-token-base \
+    --model_type            rag_token \
+    --accelerator           mps \
+    --devices               1 \
+    --precision             32 \
+    --do_train \
+    --end2end \
+    --n_val                 300 \
+    --train_batch_size      2 \
+    --eval_batch_size       1 \
+    --max_source_length     128 \
+    --max_target_length     25 \
+    --val_max_target_length 25 \
+    --test_max_target_length 25 \
+    --label_smoothing       0.1 \
+    --dropout               0.1 \
+    --attention_dropout     0.1 \
+    --weight_decay          0.001 \
+    --adam_epsilon          1e-08 \
+    --max_grad_norm         0.1 \
+    --lr_scheduler          polynomial \
+    --learning_rate         3e-05 \
+    --num_train_epochs      10 \
+    --warmup_steps          50 \
+    --gradient_accumulation_steps 8 \
+    --distributed_retriever ray \
+    --num_retrieval_workers 1 \
+    --passages_path         qaconv_data/kb/my_knowledge_dataset \
+    --index_path            qaconv_data/kb/my_knowledge_dataset_hnsw_index.faiss \
+    --index_name            custom \
+    --context_encoder_name  facebook/dpr-ctx_encoder-multiset-base \
+    --csv_path              qaconv_data/kb/passages.tsv \
+    --index_gpus            1 \
+    --gpu_order             "[]" \
+    --shard_dir             qaconv_10pct/shards_hybrid \
+    --indexing_freq         500 \
+    --num_workers           0 \
+    --val_check_interval    500 \
+    --alpha                 0.7
+```
+
+---
+
+#### Step 6 — Verify and compare results
+
+Run after each training finishes to extract best EM/F1:
+
+```bash
+python3 - <<'EOF'
+import json, glob
+
+runs = [
+    ("squad_10pct/output_baseline/metrics.json",  "SQuAD 10%",  "0.0 (baseline)"),
+    ("squad_10pct/output_hybrid/metrics.json",    "SQuAD 10%",  "0.7 (hybrid)"),
+    ("qaconv_10pct/output_baseline/metrics.json", "QAConv 10%", "0.0 (baseline)"),
+    ("qaconv_10pct/output_hybrid/metrics.json",   "QAConv 10%", "0.7 (hybrid)"),
+]
+
+print(f"{'Dataset':<12} {'α':<16} {'Best EM':>8} {'Best F1':>8}")
+print("-" * 50)
+for path, label, alpha in runs:
+    try:
+        data = json.load(open(path))
+        vals = data["val"]
+        best_em = max(vals, key=lambda x: x.get("val_avg_em", 0))
+        best_f1 = max(vals, key=lambda x: x.get("val_avg_f1", 0))
+        print(f"{label:<12} {alpha:<16} {best_em['val_avg_em']:>8.4f} {best_f1['val_avg_f1']:>8.4f}")
+    except FileNotFoundError:
+        print(f"{label:<12} {alpha:<16} {'⏳ pending':>8}")
+EOF
+```
+
+---
 
 ### Hybrid experiment results
 
-| Dataset | α | EM | F1 | vs. baseline (α=0.0) | Status |
+| Dataset | α | Best EM | Best F1 | vs. baseline EM | Status |
 |---|---|---|---|---|---|
-| SQuAD full | 0.0 | — | — | baseline | ⏳ Pending |
-| SQuAD full | TBD | — | — | — | ⏳ Pending |
-| QAConv full | 0.0 | — | — | baseline | ⏳ Pending |
-| QAConv full | TBD | — | — | — | ⏳ Pending |
+| SQuAD 10% | 0.0 (baseline) | — | — | — | ⏳ Pending |
+| SQuAD 10% | 0.7 (hybrid) | — | — | — | ⏳ Pending |
+| QAConv 10% | 0.0 (baseline) | — | — | — | ⏳ Pending |
+| QAConv 10% | 0.7 (hybrid) | — | — | — | ⏳ Pending |
+
+> **Paper sentence to declare the subset (add to Section IV):**
+> "Due to computational constraints, each condition is trained on a random 10% subset
+> of the training set (SQuAD: 8,760 examples; QAConv: 2,600 examples). The full
+> knowledge base and validation set are retained. All conditions use the identical
+> subset, ensuring a fair comparison."
 
 ---
 
