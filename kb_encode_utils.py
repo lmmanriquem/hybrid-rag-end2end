@@ -47,7 +47,7 @@ def embed_update(ctx_encoder, total_processes, device, process_num, shard_dir, c
     ) -> dict:
         """Compute the DPR embeddings of document passages"""
         input_ids = ctx_tokenizer(
-            documents["title"], documents["text"], truncation=True, padding="longest", return_tensors="pt"
+            documents["title"], documents["text"], truncation=True, padding="longest", max_length=512, return_tensors="pt"
         )["input_ids"]
         embeddings = ctx_encoder(input_ids.to(device=device), return_dict=True).pooler_output
         return {"embeddings": embeddings.detach().cpu().numpy()}

@@ -54,16 +54,16 @@ The only required change from the baseline run is adding `--alpha`. All other ar
 
 ## Results
 
-Full training experiments are pending. This section will be updated with final EM and F1 results on SQuAD and QAConv once training is complete.
+Experiments run on a 10% random subset of each training set (SQuAD: 8,760 examples; QAConv: 2,600 examples) with full knowledge bases retained. Exact Match (EM) is reported as the primary metric.
 
-| Experiment | Dataset | α | EM | F1 | Status |
+| Experiment | Dataset | α | Best EM | vs. Baseline | Status |
 |---|---|---|---|---|---|
-| Baseline (DPR) | SQuAD full | 0.0 | — | — | ⏳ Pending |
-| Baseline (DPR) | QAConv full | 0.0 | — | — | ⏳ Pending |
-| Hybrid | SQuAD full | TBD | — | — | ⏳ Pending |
-| Hybrid | QAConv full | TBD | — | — | ⏳ Pending |
-| Paper target (Siriwardhana et al.) | SQuAD | — | 40.02 | 52.63 | — |
-| Paper target (Siriwardhana et al.) | QAConv | — | 24.25 | 36.05 | — |
+| Baseline (DPR) | SQuAD 10% | 0.0 | 0.3300 | — | ✅ Done |
+| Hybrid (BM25+DPR) | SQuAD 10% | 0.7 | 0.3933 | +19.2% | ✅ Done |
+| Baseline (DPR) | QAConv 10% | 0.0 | 0.0867 | — | ✅ Done |
+| Hybrid (BM25+DPR) | QAConv 10% | 0.7 | 0.1067 | +22.9% | ✅ Done |
+| Paper target (Siriwardhana et al.) | SQuAD full | — | 40.02 | — | — |
+| Paper target (Siriwardhana et al.) | QAConv full | — | 24.25 | — | — |
 
 ---
 

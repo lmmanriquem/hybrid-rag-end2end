@@ -1325,7 +1325,7 @@ sudo pmset -a sleep 1
 sudo pmset -a disksleep 10
 ```
 
-### Phase 1 — Results (to be filled after running)
+### Phase 1 — Results
 
 | Dataset | α | Best EM | Final EM | Notes |
 |---|---|---|---|---|
@@ -1449,8 +1449,6 @@ sudo pmset -a disksleep 0
 #### Step 4a — Baseline SQuAD 10% (α=0.0, ~11 h)
 
 ```bash
-ray start --head
-
 KMP_DUPLICATE_LIB_OK=TRUE TOKENIZERS_PARALLELISM=false \
 python finetune_rag.py \
     --data_dir              squad_10pct \
@@ -1650,6 +1648,18 @@ python finetune_rag.py \
 
 #### Step 6 — Verify and compare results
 
+> **Where to find the raw results:** each training run saves its metrics to a
+> `metrics.json` file inside its output directory. These directories are not versioned
+> (see `.gitignore`) but persist locally at:
+> ```
+> squad_10pct/output_baseline/metrics.json   ← SQuAD baseline  (α=0.0)
+> squad_10pct/output_hybrid/metrics.json     ← SQuAD hybrid    (α=0.7)
+> qaconv_10pct/output_baseline/metrics.json  ← QAConv baseline (α=0.0)
+> qaconv_10pct/output_hybrid/metrics.json    ← QAConv hybrid   (α=0.7)
+> ```
+> The file is written incrementally after every validation checkpoint, so it is safe
+> to inspect mid-run. The script below extracts the best EM across all checkpoints.
+
 Run after each training finishes to extract best EM/F1:
 
 ```bash
@@ -1683,10 +1693,10 @@ EOF
 
 | Dataset | α | Best EM | Best F1 | vs. baseline EM | Status |
 |---|---|---|---|---|---|
-| SQuAD 10% | 0.0 (baseline) | — | — | — | ⏳ Pending |
-| SQuAD 10% | 0.7 (hybrid) | — | — | — | ⏳ Pending |
-| QAConv 10% | 0.0 (baseline) | — | — | — | ⏳ Pending |
-| QAConv 10% | 0.7 (hybrid) | — | — | — | ⏳ Pending |
+| SQuAD 10% | 0.0 (baseline) | 0.3300 | — | — | ✅ Done (2026-05-13) |
+| SQuAD 10% | 0.7 (hybrid) | 0.3933 | — | +19.2% | ✅ Done (2026-05-14) |
+| QAConv 10% | 0.0 (baseline) | 0.0867 | — | — | ✅ Done (2026-05-13) |
+| QAConv 10% | 0.7 (hybrid) | 0.1067 | — | +22.9% | ✅ Done (2026-05-13) |
 
 > **Paper sentence to declare the subset (add to Section IV):**
 > "Due to computational constraints, each condition is trained on a random 10% subset
