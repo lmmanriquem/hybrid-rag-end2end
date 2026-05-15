@@ -72,12 +72,12 @@ The only required change from the baseline run is adding `--alpha`. All other ar
 
 Experiments run on a 10% random subset of each training set (SQuAD: 8,760 examples; QAConv: 2,600 examples) with full knowledge bases retained. Exact Match (EM) is reported as the primary metric.
 
-| Experiment | Dataset | α | Best EM | vs. Baseline | Status |
+| Experiment | Dataset | α | Best EM (%) | vs. Baseline | Status |
 |---|---|---|---|---|---|
-| Baseline (DPR) | SQuAD 10% | 0.0 | 0.3300 | — | ✅ Done |
-| Hybrid (BM25+DPR) | SQuAD 10% | 0.7 | 0.3933 | +19.2% | ✅ Done |
-| Baseline (DPR) | QAConv 10% | 0.0 | 0.0867 | — | ✅ Done |
-| Hybrid (BM25+DPR) | QAConv 10% | 0.7 | 0.1067 | +22.9% | ✅ Done |
+| Baseline (DPR) | SQuAD 10% | 0.0 | 33.00 | — | ✅ Done |
+| Hybrid (BM25+DPR) | SQuAD 10% | 0.7 | 39.33 | +19.2% | ✅ Done |
+| Baseline (DPR) | QAConv 10% | 0.0 | 8.67 | — | ✅ Done |
+| Hybrid (BM25+DPR) | QAConv 10% | 0.7 | 10.67 | +22.9% | ✅ Done |
 | Paper target (Siriwardhana et al.) | SQuAD full | — | 40.02 | — | — |
 | Paper target (Siriwardhana et al.) | QAConv full | — | 24.25 | — | — |
 
@@ -393,8 +393,8 @@ Full step-by-step instructions for all experiments are in [EXPERIMENTS.md](./EXP
 |---|---|---|---|---|---|
 | Smoke test | Dummy | 0.0 | < 1 min | ✅ Done | loss ≈ 76.5 |
 | Smoke test | Dummy | 0.3 | < 1 min | ✅ Done | loss ≈ 81.4 |
-| Quick test | SQuAD mini (500 / 2K KB) | 0.0 | ~1h45min | ✅ Done | 0.07 (best) |
-| Quick test | QAConv mini (300 / 1.5K KB) | 0.0 | ~50min | ✅ Done | 0.22 (best) |
+| Quick test | SQuAD mini (500 / 2K KB) | 0.0 | ~1h45min | ✅ Done | 7.00% (best) |
+| Quick test | QAConv mini (300 / 1.5K KB) | 0.0 | ~50min | ✅ Done | 21.67% (best) |
 | FAISS index build | SQuAD full (34,620 passages) | — | ~2 min | ✅ Done | — |
 | FAISS index build | QAConv full (68,707 passages) | — | ~6 min | ✅ Done | — |
 | FAISS re-encoding trigger test | QAConv (1,100 / 3K KB) | — | ~10 min | ✅ Done | fired ✅ |
