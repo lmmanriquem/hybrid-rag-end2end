@@ -16,6 +16,22 @@ The central hypothesis is that this hybrid signal helps the model adapt to speci
 
 ---
 
+## Repository Lineage
+
+This repository is the third step in a chain of progressively extended codebases:
+
+| Step | Repository | What it adds |
+|---|---|---|
+| 1 | [huggingface/transformers-research-projects](https://github.com/huggingface/transformers-research-projects/tree/main/rag-end2end-retriever) | Original RAG-end2end code by Siriwardhana et al. — NVIDIA/CUDA only |
+| 2 | [lmmanriquem/rag-end2end-retriever](https://github.com/lmmanriquem/rag-end2end-retriever) | **Apple Silicon adaptation** — makes RAG-end2end fully functional on MPS (M1/M2/M3/M4) without any NVIDIA hardware |
+| 3 | [lmmanriquem/hybrid-rag-end2end](https://github.com/lmmanriquem/hybrid-rag-end2end) *(this repo)* | **Hybrid retrieval contribution** — adds BM25+DPR fusion into the training loop on top of Step 2 |
+
+**Step 2 is a standalone contribution.** Getting RAG-end2end to run on Apple Silicon required resolving non-trivial platform-specific issues: dual OpenMP conflicts between PyTorch MPS and FAISS, MPS dtype incompatibilities, macOS `spawn`-based multiprocessing failures in the FAISS re-encoding cycle, and CUDA-specific imports scattered throughout the codebase. The result — a fully functional RAG-end2end on M-series hardware — is independently useful for anyone who wants to reproduce or extend Siriwardhana et al. without NVIDIA GPUs.
+
+If you only need RAG-end2end on Apple Silicon (no hybrid retrieval), use [lmmanriquem/rag-end2end-retriever](https://github.com/lmmanriquem/rag-end2end-retriever) directly.
+
+---
+
 ## Research Contribution
 
 **The fusion formula:**
@@ -54,16 +70,16 @@ The only required change from the baseline run is adding `--alpha`. All other ar
 
 ## Results
 
-Full training experiments are pending. This section will be updated with final EM and F1 results on SQuAD and QAConv once training is complete.
+Experiments run on a 10% random subset of each training set (SQuAD: 8,760 examples; QAConv: 2,600 examples) with full knowledge bases retained. Exact Match (EM) is reported as the primary metric.
 
-| Experiment | Dataset | α | EM | F1 | Status |
+| Experiment | Dataset | α | Best EM | vs. Baseline | Status |
 |---|---|---|---|---|---|
-| Baseline (DPR) | SQuAD full | 0.0 | — | — | ⏳ Pending |
-| Baseline (DPR) | QAConv full | 0.0 | — | — | ⏳ Pending |
-| Hybrid | SQuAD full | TBD | — | — | ⏳ Pending |
-| Hybrid | QAConv full | TBD | — | — | ⏳ Pending |
-| Paper target (Siriwardhana et al.) | SQuAD | — | 40.02 | 52.63 | — |
-| Paper target (Siriwardhana et al.) | QAConv | — | 24.25 | 36.05 | — |
+| Baseline (DPR) | SQuAD 10% | 0.0 | 0.3300 | — | ✅ Done |
+| Hybrid (BM25+DPR) | SQuAD 10% | 0.7 | 0.3933 | +19.2% | ✅ Done |
+| Baseline (DPR) | QAConv 10% | 0.0 | 0.0867 | — | ✅ Done |
+| Hybrid (BM25+DPR) | QAConv 10% | 0.7 | 0.1067 | +22.9% | ✅ Done |
+| Paper target (Siriwardhana et al.) | SQuAD full | — | 40.02 | — | — |
+| Paper target (Siriwardhana et al.) | QAConv full | — | 24.25 | — | — |
 
 ---
 
@@ -536,9 +552,9 @@ No changes are required to run on NVIDIA hardware.
 
 ## Implementation Notes
 
-This repository extends the [rag-end2end-retriever](https://github.com/huggingface/transformers-research-projects/tree/main/rag-end2end-retriever) codebase with two categories of changes:
+This repository extends [lmmanriquem/rag-end2end-retriever](https://github.com/lmmanriquem/rag-end2end-retriever) (the Apple Silicon adaptation of the original Siriwardhana et al. codebase) with one additional category of changes:
 
-**Apple Silicon adaptations** (in `finetune_rag.py`, `lightning_base.py`, `kb_encode_utils.py`): platform-aware GPU detection, FAISS OpenMP conflict resolution, MPS dtype handling, and multiprocessing fixes for macOS `spawn`. These are transparent to functionality — the training behavior is identical to the NVIDIA path.
+**Apple Silicon adaptations** are already present in the base repo — see [lmmanriquem/rag-end2end-retriever](https://github.com/lmmanriquem/rag-end2end-retriever) for the full list of platform fixes (FAISS OpenMP conflict, MPS dtype handling, multiprocessing fixes for macOS `spawn`, CUDA-specific import removal).
 
 **Hybrid retrieval contribution** (in `hybrid_retriever.py`, `build_bm25_index.py`, and additions to `finetune_rag.py`): `HybridRayDistributedRetriever` subclasses `RagRayDistributedRetriever` and overrides `retrieve()` to fuse BM25 and DPR scores before returning the top-K passages to the training loop. The `--alpha` argument controls the fusion weight. Setting `--alpha 0.0` disables BM25 entirely with zero overhead.
 

@@ -86,4 +86,10 @@ qaconv_trigger/
 
 # ── Training shards and output checkpoints ────────────────────────────────────
 */shards/
+*/shards_*/
 */output/
+*/output_*/
+
+# ── 10% subset experiment directories (generated from full data via head -n) ──
+squad_10pct/
+qaconv_10pct/
