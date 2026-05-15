@@ -414,11 +414,11 @@ Checkpoint saved: squad_mini/output/checkpoint251/
 
 Training curve across the single epoch (251 validation checkpoints):
 
-| Step | val_avg_loss | val_avg_em |
+| Step | val_avg_loss | val_avg_em (%) |
 |---|---|---|
 | 1 (start) | 39.21 | 0.00 |
-| 122 (best EM) | — | **0.07** |
-| 251 (end) | 14.50 | 0.05 |
+| 122 (best EM) | — | **7.00** |
+| 251 (end) | 14.50 | 5.00 |
 
 ### Comparison with the paper (SQuAD — Open Domain QA)
 
@@ -430,10 +430,10 @@ results can be compared directly as full training runs are completed.
 | Training examples | 87,599 | 500 |
 | KB passages | 34,620 | 2,000 |
 | Training epochs | multiple | 1 |
-| **EM (Exact Match)** | **40.02** | **0.07** (best) / 0.05 (final) |
+| **EM (Exact Match) (%)** | **40.02** | **7.00** (best) / 5.00 (final) |
 | val_avg_loss | — | 14.50 (final) |
 
-The gap between 0.07 and 40.02 is expected: we used 0.6% of the training data for
+The gap between 7.00% and 40.02% is expected: we used 0.6% of the training data for
 a single epoch, while the paper trained on the full dataset for multiple epochs with
 retriever re-encoding after every step. The purpose of this run was to confirm
 the pipeline is wired correctly, not to match the paper's numbers.
@@ -444,7 +444,7 @@ the pipeline is wired correctly, not to match the paper's numbers.
 Download → Prepare → FAISS Index → RAG Training → Metrics ✅
 (urllib)   (prepare_  (use_own_    (finetune_    (metrics.json
             squad.py)  knowledge_   rag.py,       val_avg_em
-                       dataset.py,  MPS, 1h45m)   = 0.07)
+                       dataset.py,  MPS, 1h45m)   = 7.00%)
                        MPS, ~2min)
 ```
 
@@ -549,11 +549,11 @@ Total mini-steps = 150 training batches × (1 train + 60 val) = 9,150.
 
 Training curve across the single epoch (151 validation checkpoints):
 
-| Step | val_avg_loss | val_avg_em |
+| Step | val_avg_loss | val_avg_em (%) |
 |---|---|---|
 | 1 (start) | 45.92 | 0.00 |
-| 91 (best EM) | — | **0.2167** |
-| 151 (end) | 23.82 | 0.2000 |
+| 91 (best EM) | — | **21.67** |
+| 151 (end) | 23.82 | 20.00 |
 
 ### Comparison with the paper (QAConv — Conversation Domain, Table 1)
 
@@ -562,11 +562,11 @@ Training curve across the single epoch (151 validation checkpoints):
 | Training examples | 25,988 | 300 |
 | KB passages | 68,707 | 1,500 |
 | Training epochs | multiple | 1 |
-| **EM (Exact Match)** | **24.25** | **0.2167** (best) / 0.20 (final) |
+| **EM (Exact Match) (%)** | **24.25** | **21.67** (best) / 20.00 (final) |
 | val_avg_loss | — | 23.82 (final) |
 
-The EM of 0.22 with 1.2% of the training data in a single epoch is notably higher
-than the SQuAD mini result (0.07 with 0.6% of its data). QAConv answers tend to be
+The EM of 21.67% with 1.2% of the training data in a single epoch is notably higher
+than the SQuAD mini result (7.00% with 0.6% of its data). QAConv answers tend to be
 shorter and more specific (names, dates, short phrases from conversation turns),
 making exact match easier to achieve even with limited training. The loss dropped
 by 48% (45.92 → 23.82), confirming the model is learning the QAConv domain.
@@ -576,8 +576,8 @@ by 48% (45.92 → 23.82), confirming the model is learning the QAConv domain.
 ```
 Download → Prepare      → FAISS Index  → RAG Training → Metrics ✅
 (manual    (prepare_      (use_own_       (finetune_     (metrics.json
- ZIP)       qaconv.py,     knowledge_      rag.py,        best EM=0.22,
-            300/60/1500)   dataset.py,     MPS, ~50min)   final EM=0.20)
+ ZIP)       qaconv.py,     knowledge_      rag.py,        best EM=21.67%,
+            300/60/1500)   dataset.py,     MPS, ~50min)   final EM=20.00%)
                            MPS, ~10sec)
 ```
 
@@ -1327,16 +1327,16 @@ sudo pmset -a disksleep 10
 
 ### Phase 1 — Results
 
-| Dataset | α | Best EM | Final EM | Notes |
+| Dataset | α | Best EM (%) | Final EM (%) | Notes |
 |---|---|---|---|---|
-| QAConv mini | 0.3 | 0.2000 | 0.1667 | ✅ |
-| QAConv mini | 0.5 | 0.1833 | 0.1833 | ✅ |
-| QAConv mini | 0.7 | 0.2500 | 0.2500 | ✅ |
-| SQuAD mini | 0.3 | 0.0700 | 0.0500 | ✅ |
-| SQuAD mini | 0.5 | 0.0700 | 0.0400 | ✅ |
-| SQuAD mini | 0.7 | 0.1200 | 0.0700 | ✅ |
+| QAConv mini | 0.3 | 20.00 | 16.67 | ✅ |
+| QAConv mini | 0.5 | 18.33 | 18.33 | ✅ |
+| QAConv mini | 0.7 | 25.00 | 25.00 | ✅ |
+| SQuAD mini | 0.3 | 7.00 | 5.00 | ✅ |
+| SQuAD mini | 0.5 | 7.00 | 4.00 | ✅ |
+| SQuAD mini | 0.7 | 12.00 | 7.00 | ✅ |
 
-**Best α selected:** QAConv → α=0.7 (EM=0.2500) | SQuAD → α=0.7 (EM=0.1200)
+**Best α selected:** QAConv → α=0.7 (EM=25.00%) | SQuAD → α=0.7 (EM=12.00%)
 
 ### Phase 2 — Full hybrid training commands (10% subset)
 
@@ -1659,6 +1659,11 @@ python finetune_rag.py \
 > ```
 > The file is written incrementally after every validation checkpoint, so it is safe
 > to inspect mid-run. The script below extracts the best EM across all checkpoints.
+>
+> **Note on scale:** `val_avg_em` in `metrics.json` is stored as a proportion in [0, 1]
+> (e.g., 0.3933). All EM values reported in this document are percentages ×100
+> (e.g., 39.33%), consistent with the convention used by Siriwardhana et al. and the
+> broader NLP literature.
 
 Run after each training finishes to extract best EM/F1:
 
@@ -1691,12 +1696,12 @@ EOF
 
 ### Hybrid experiment results
 
-| Dataset | α | Best EM | Best F1 | vs. baseline EM | Status |
+| Dataset | α | Best EM (%) | Best F1 | vs. baseline EM | Status |
 |---|---|---|---|---|---|
-| SQuAD 10% | 0.0 (baseline) | 0.3300 | — | — | ✅ Done (2026-05-13) |
-| SQuAD 10% | 0.7 (hybrid) | 0.3933 | — | +19.2% | ✅ Done (2026-05-14) |
-| QAConv 10% | 0.0 (baseline) | 0.0867 | — | — | ✅ Done (2026-05-13) |
-| QAConv 10% | 0.7 (hybrid) | 0.1067 | — | +22.9% | ✅ Done (2026-05-13) |
+| SQuAD 10% | 0.0 (baseline) | 33.00 | — | — | ✅ Done (2026-05-13) |
+| SQuAD 10% | 0.7 (hybrid) | 39.33 | — | +19.2% | ✅ Done (2026-05-14) |
+| QAConv 10% | 0.0 (baseline) | 8.67 | — | — | ✅ Done (2026-05-13) |
+| QAConv 10% | 0.7 (hybrid) | 10.67 | — | +22.9% | ✅ Done (2026-05-13) |
 
 > **Paper sentence to declare the subset (add to Section IV):**
 > "Due to computational constraints, each condition is trained on a random 10% subset
