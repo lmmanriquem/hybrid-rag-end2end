@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rEno \"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,}\" --include=\"*.md\" --include=\"*.py\" --include=\"*.txt\" --include=\"*.yml\" --include=\"*.yaml\" --include=\"*.json\" --include=\"*.cfg\" --include=\"*.toml\" .)",
+      "Bash(grep -Ei \"log|\\\\.txt$\")",
+      "Bash(grep -rli \"copyright\" *.py)",
+      "Bash(grep -n \"/Users/\" *.sh)"
+    ]
+  }
+}
