@@ -24,7 +24,7 @@ Next steps
 [12:56:55] --- START | dataset=qaconv_mini | α=0.3 | output → qaconv_mini/output_a03
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -247,13 +247,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -479,7 +479,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -705,14 +705,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -938,7 +938,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -1167,13 +1167,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from qaconv_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from qaconv_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (1500 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -1201,7 +1201,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -1221,7 +1221,7 @@ Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -1246,12 +1246,12 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -1475,13 +1475,13 @@ Model config RagConfig {
 }
 
 Safetensors PR exists
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -1707,7 +1707,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -1933,14 +1933,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -2166,7 +2166,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -2392,7 +2392,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -2417,13 +2417,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -12087,7 +12087,7 @@ Special tokens file saved in qaconv_mini/output_a03/dpr_ctx_checkpoint/checkpoin
 [13:41:27] --- START | dataset=qaconv_mini | α=0.5 | output → qaconv_mini/output_a05
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -12310,13 +12310,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -12542,7 +12542,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -12768,14 +12768,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -13001,7 +13001,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -13230,13 +13230,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from qaconv_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from qaconv_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (1500 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -13264,7 +13264,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -13284,7 +13284,7 @@ Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -13309,12 +13309,12 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -13538,13 +13538,13 @@ Model config RagConfig {
 }
 
 Safetensors PR exists
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -13770,7 +13770,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -13996,14 +13996,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -14229,7 +14229,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -14455,7 +14455,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -14480,13 +14480,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -24150,7 +24150,7 @@ Special tokens file saved in qaconv_mini/output_a05/dpr_ctx_checkpoint/checkpoin
 [14:24:50] --- START | dataset=qaconv_mini | α=0.7 | output → qaconv_mini/output_a07
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -24373,13 +24373,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -24605,7 +24605,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -24831,14 +24831,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -25064,7 +25064,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -25293,13 +25293,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from qaconv_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from qaconv_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (1500 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -25327,7 +25327,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -25346,7 +25346,7 @@ Some weights of the model checkpoint at facebook/rag-token-base were not used wh
 Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -25372,12 +25372,12 @@ Model config DPRConfig {
 }
 
 Safetensors PR exists
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -25600,13 +25600,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -25832,7 +25832,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -26059,14 +26059,14 @@ The tokenizer class you load from this checkpoint is not the same type as the cl
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
 Safetensors PR exists
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -26292,7 +26292,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -26518,7 +26518,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -26543,13 +26543,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -36215,7 +36215,7 @@ Special tokens file saved in qaconv_mini/output_a07/dpr_ctx_checkpoint/checkpoin
 [15:07:05] --- START | dataset=squad_mini | α=0.3 | output → squad_mini/output_a03
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -36438,13 +36438,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -36670,7 +36670,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -36896,14 +36896,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -37129,7 +37129,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -37358,13 +37358,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from squad_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from squad_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (2000 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -37392,7 +37392,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -37412,7 +37412,7 @@ Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -37437,12 +37437,12 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -37665,13 +37665,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -37897,7 +37897,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -38124,14 +38124,14 @@ The tokenizer class you load from this checkpoint is not the same type as the cl
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
 Safetensors PR exists
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -38357,7 +38357,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -38583,7 +38583,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -38608,13 +38608,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -64678,7 +64678,7 @@ Special tokens file saved in squad_mini/output_a03/dpr_ctx_checkpoint/checkpoint
 [16:56:40] --- START | dataset=squad_mini | α=0.5 | output → squad_mini/output_a05
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -64901,13 +64901,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -65133,7 +65133,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -65359,14 +65359,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -65592,7 +65592,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -65821,13 +65821,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from squad_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from squad_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (2000 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -65855,7 +65855,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -65875,7 +65875,7 @@ Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -65900,12 +65900,12 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -66129,13 +66129,13 @@ Model config RagConfig {
 }
 
 Safetensors PR exists
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -66361,7 +66361,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -66587,14 +66587,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -66820,7 +66820,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -67046,7 +67046,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -67071,13 +67071,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -93141,7 +93141,7 @@ Special tokens file saved in squad_mini/output_a05/dpr_ctx_checkpoint/checkpoint
 [18:45:09] --- START | dataset=squad_mini | α=0.7 | output → squad_mini/output_a07
 /opt/miniconda3/envs/hybrid-rag-env/lib/python3.11/site-packages/lightning_fabric/__init__.py:29: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   __import__("pkg_resources").declare_namespace(__name__)
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -93364,13 +93364,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -93596,7 +93596,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -93822,14 +93822,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -94055,7 +94055,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -94284,13 +94284,13 @@ The class this function is called from is 'BartTokenizerFast'.
 Loading passages from squad_mini/kb/my_knowledge_dataset
 INFO:hybrid_retriever:Building BM25 index from squad_mini/kb/my_knowledge_dataset ...
 INFO:hybrid_retriever:BM25 index ready (2000 passages).
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -94318,7 +94318,7 @@ Model config DPRConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'DPRQuestionEncoderTokenizer'. 
 The class this function is called from is 'DPRContextEncoderTokenizerFast'.
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/pytorch_model.bin
 Generate config GenerationConfig {
   "forced_eos_token_id": 2
 }
@@ -94338,7 +94338,7 @@ Attempting to create safetensors variant
 Generation config file not found, using a generation config created from the model config.
 Could not locate the custom_generate/generate.py inside facebook/rag-token-base.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -94363,12 +94363,12 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading weights file pytorch_model.bin from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
+loading weights file pytorch_model.bin from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/pytorch_model.bin
 Some weights of the model checkpoint at facebook/dpr-ctx_encoder-multiset-base were not used when initializing DPRContextEncoder: ['ctx_encoder.bert_model.pooler.dense.bias', 'ctx_encoder.bert_model.pooler.dense.weight']
 - This IS expected if you are initializing DPRContextEncoder from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing DPRContextEncoder from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
 Attempting to create safetensors variant
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -94591,13 +94591,13 @@ Model config RagConfig {
   "vocab_size": null
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/vocab.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/question_encoder_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -94824,7 +94824,7 @@ The tokenizer class you load from this checkpoint is not the same type as the cl
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizer'.
 Safetensors PR exists
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -95050,14 +95050,14 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'DPRQuestionEncoderTokenizerFast'.
-loading file vocab.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
-loading file merges.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
+loading file vocab.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/vocab.json
+loading file merges.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/merges.txt
 loading file tokenizer.json from cache at None
 loading file added_tokens.json from cache at None
-loading file special_tokens_map.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
+loading file special_tokens_map.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/special_tokens_map.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/generator_tokenizer/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -95283,7 +95283,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizer'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--rag-token-base/snapshots/bdeb4ef1d547bcfe5445aba1704ece55af71dd58/config.json
 Model config RagConfig {
   "architectures": [
     "RagTokenForGeneration"
@@ -95509,7 +95509,7 @@ Model config RagConfig {
 The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
 The tokenizer class you load from this checkpoint is 'RagTokenizer'. 
 The class this function is called from is 'BartTokenizerFast'.
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
@@ -95534,13 +95534,13 @@ Model config DPRConfig {
   "vocab_size": 30522
 }
 
-loading file vocab.txt from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
-loading file tokenizer.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
+loading file vocab.txt from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/vocab.txt
+loading file tokenizer.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer.json
 loading file added_tokens.json from cache at None
 loading file special_tokens_map.json from cache at None
-loading file tokenizer_config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
+loading file tokenizer_config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/tokenizer_config.json
 loading file chat_template.jinja from cache at None
-loading configuration file config.json from cache at /Users/luismanuel/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
+loading configuration file config.json from cache at /home/user/.cache/huggingface/hub/models--facebook--dpr-ctx_encoder-multiset-base/snapshots/fdb3d46584386d2f20aa00724ae31cebc348d16b/config.json
 Model config DPRConfig {
   "architectures": [
     "DPRContextEncoder"
