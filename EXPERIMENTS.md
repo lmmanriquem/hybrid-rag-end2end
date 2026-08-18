@@ -1701,7 +1701,7 @@ EOF
 | SQuAD 10% | 0.0 (baseline) | 33.00 | — | — | ✅ Done (2026-05-13) |
 | SQuAD 10% | 0.7 (hybrid) | 39.33 | — | +19.2% | ✅ Done (2026-05-14) |
 | QAConv 10% | 0.0 (baseline) | 8.67 | — | — | ✅ Done (2026-05-13) |
-| QAConv 10% | 0.7 (hybrid) | 10.67 | — | +22.9% | ✅ Done (2026-05-13) |
+| QAConv 10% | 0.7 (hybrid) | 10.67 | — | +23.1% | ✅ Done (2026-05-13) |
 
 > **Paper sentence to declare the subset (add to Section IV):**
 > "Due to computational constraints, each condition is trained on a random 10% subset
