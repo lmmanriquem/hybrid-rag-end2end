@@ -88,7 +88,7 @@ Experiments run on a 10% random subset of each training set (SQuAD: 8,760 exampl
 ```bibtex
 @inproceedings{manrique2026hybridrag,
   title     = {Hybrid-RAG-end2end: BM25+DPR Hybrid Retrieval in the RAG Training Loop for Specialized Domain Adaptation},
-  author    = {Manrique Mart{\'i}nez, Luis Manuel and Sotelo Chico, Victor Jes{\'u}s},
+  author    = {Manrique Mart{\'i}nez, Luis Manuel and Sotelo Chico, V{\'i}ctor Jes{\'u}s},
   booktitle = {Proceedings of the 9th International Conference on Systems Engineering (CIIS 2026)},
   year      = {2026},
   address   = {Lima, Peru},
